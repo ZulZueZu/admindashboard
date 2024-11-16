@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Nurzulaikha Ghazali">
+        <meta name="description" content="A comprehensive and intuitive Project Management Admin Dashboard designed to streamline workflow, monitor progress, and enhance productivity.">
+        <meta name="keywords" content="Project Management, Admin Dashboard, Task Tracking, Workflow, Productivity, Analytics, Team Collaboration">
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.min.js" integrity="sha512-2uu1jrAmW1A+SMwih5DAPqzFS2PI+OPw79OVLS4NJ6jGHQ/GmIVDDlWwz4KLO8DnoUmYdU8hTtFcp8je6zxbCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="styles.css">
+        <script src="projects.js" defer></script>
+        <script src="users.js" defer></script>
+        <script src="script.js" defer></script>
+        <link rel="icon" type="image/x-icon" href="./assets/ad-logo.ico">
+    </head>
+    <body>
+        <nav>
+            <div class="container">
+                <!--<img class="logo" src="./assets/logo.png" alt="admin dashboard">-->
+                <h1 class="title-logo">PM.AD</h1>
+                <div class="search-bar">
+                    <i class="fas fa-search search"></i>
+                    <input type="search" placeholder="Search">
+                </div>
+                <div class="profile-area">
+                    <div class="inbox">
+                        <div class="dropdown">
+                            <button class="options" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-inbox dark"></i>
+                                <i class="fas fa-circle danger notif"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#" data-coreui-i18n="my-profile">
+                                    <p><b>Robert Downey Jr.</b></p>
+                                    <p>Just a reminder: The deadline for submitting your report is tomorrow at 5 PM.</p>
+                                    <small>4 mins ago</small>
+                                </a>
+                                <a class="dropdown-item" href="#" data-coreui-i18n="account-settings">
+                                    <p><b>Emma Watson</b></p>
+                                    <p>The button on the home page isn't responding when clicked. Can you check it out?</p>
+                                    <small>2 hours ago</small>
+                                </a>
+                                <a class="dropdown-item" href="#" data-coreui-i18n="sign-out">
+                                    <p><b>Jennie Kim</b></p>
+                                    <p>I love the new UI design! However, it would be great if the sidebar could be collapsible</p>
+                                    <small>6 hours ago</small>
+                                </a>
+                                <a class="dropdown-item" style="text-align: center;" href="#" data-coreui-i18n="sign-out">
+                                    Show all messages
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <div class="profile-photo">
+                            <img src="./assets/profile-1.webp" alt="user-profile">
+                        </div>
+                        <h5>Zue</h5>
+                        <div class="dropdown">
+                            <button class="options" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-chevron-down expand-more"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#" data-coreui-i18n="my-profile">
+                                    <i class="fas fa-user" style="width: 1.5rem;"></i>
+                                    My Profile
+                                </a>
+                                <a class="dropdown-item" href="#" data-coreui-i18n="account-settings">
+                                    <i class="fas fa-user-cog" style="width: 1.5rem;"></i>
+                                    Account Settings
+                                </a>
+                                <a class="dropdown-item" href="#" data-coreui-i18n="sign-out">
+                                    <i class="fas fa-sign-out-alt" style="width: 1.5rem;"></i>
+                                    Sign Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-btn">
+                        <i class="fas fa-sun light-mode active"></i>
+                        <i class="fas fa-moon dark-mode"></i>
+                    </div>
+                    <button id="menu-btn">
+                        <i class="fas fa-bars menu"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <aside>
+                <!-- SIDEBAR -->
+                <button id="close-btn">
+                    <i class="fas fa-times close"></i>
+                </button>
+                <div class="sidebar">
+                    <a href="#" class="active">
+                        <i class="fas fa-th-large"></i>
+                        <h4>Dashboard</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-project-diagram"></i>
+                        <h4>Projects</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-tasks"></i>
+                        <h4>Tasks</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Calendar</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <h4>Teams</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-chart-pie"></i>
+                        <h4>Analytics</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-folder-open"></i>
+                        <h4>Assets</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-inbox"></i>
+                        <h4>Messages</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Help Center</h4>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-cog"></i>
+                        <h4>Settings</h4>
+                    </a>
+                </div>
+                <div class="updates">
+                    <i class="fas fa-wrench"></i>
+                    <h4>Updates Available</h4>
+                    <p>Security Updates</p>
+                    <p>General Updates</p>
+                    <a href="#">Update Now</a>
+                </div>
+            </aside>
+            <section class="middle">
+                <div class="header">
+                    <h1>Dashboard</h1>
+                    <input type="date">
+                    <i class="fas fa-question-circle text-muted lightbox-toggle" style="cursor: pointer"></i>
+                </div>
+                <div class="cards">
+                    <!-- FIRST CARD -->
+                    <div class="project">
+                        <div class="card-name">
+                            <i class="fas fa-project-diagram card-icon"></i>
+                            <h3>Project</h3>
+                            <div class="dropdown">
+                                <button class="options primary" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="project-management-dashboard">Project Management Dashboard</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="todo-list-app">To-Do List App</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="event-management-system">Event Management System</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="inventory-management-system">Inventory Management System</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="sales-dashboard">Sales Dashboard</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="fas fa-times danger"></i>
+                                    <h5>Not Started</h5>
+                                    <p class="percentage">43%</p>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="fas fa-code warning"></i>
+                                    <h5>Under Development</h5>
+                                    <p class="percentage">70%</p>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="fas fa-hourglass-half purple"></i>
+                                    <h5>Testing</h5>
+                                    <p class="percentage">60%</p>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-purple" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress-group-header">
+                                    <i class="fas fa-check success"></i>
+                                    <h5>Completed</h5>
+                                    <p class="percentage">40%</p>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">Project Management Dashboard</small>
+                    </div>
+                    <!-- SECOND CARD -->
+                    <div class="chart">
+                        <div class="card-name">
+                            <i class="fas fa-tasks card-icon"></i>
+                            <h3>Project Progress</h3>
+                            <div class="dropdown">
+                                <button class="options primary" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-week">Last Week</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-month">Last Month</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-year">Last Year</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="insights">
+                                <div class="number">
+                                    <h5>85.06%</h5>
+                                </div>
+                                <canvas id="progressChart"></canvas>
+                            </div>
+                        </div>
+                        <!--<div class="middle">
+                            <div class="insights">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>81%</p>
+                                </div>
+                            </div>
+                        </div>-->
+                        <small class="text-muted">Last Week</small>
+                    </div>
+                    <!-- THIRD CARD -->
+                    <div class="tasks">
+                        <div class="card-name">
+                            <i class="fas fa-chart-line card-icon"></i>
+                            <h3>Productivity</h3>
+                            <div class="dropdown">
+                                <button class="options primary" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-week">Last Week</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-month">Last Month</a>
+                                    <a class="dropdown-item" href="#" data-coreui-i18n="last-year">Last Year</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="wrapper">
+                                <canvas id="tasksBarChart"></canvas>
+                            </div>
+                        </div>
+                        <small class="text-muted">Last Week</small>
+                    </div>
+                </div>
+                <!-- USERS -->
+                <div class="users">
+                    <div class="users-title">
+                        <h2>Users</h2>
+                        <div class="alpha">
+                            <i class="fas fa-sort-alpha-down alpha-asc" style="cursor: pointer"></i>
+                            <i class="fas fa-sort-alpha-down-alt alpha-desc" style="cursor: pointer"></i>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <i class="fas fa-user"></i>
+                                </th>
+                                <th>User</th>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Activity</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr>
+                                <td>
+                                    <img class="profile-photo" src="./assets/profile-1.webp" alt="user profile">
+                                </td>
+                                <td>Nurzulaikha Mohd Ghazali</td>
+                                <td>123456</td>
+                                <td>nurzulaikha@gmail.com</td>
+                                <td>
+                                    <small>Last login</small>
+                                    <p class="success">Online</p>
+                                </td>
+                                <td>
+                                    <i class="fas fa-ellipsis-v primary details"></i>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                    <a href="#/" class="show-users">Show All</a>
+                </div>
+            </section>
+            <section class="right">
+                <!-- PROJECT TIMELINE -->
+                <div class="project-timeline">
+                    <h2>Project Timeline</h2>
+                    <div id="project-due" class="projects">
+                        <!--<div class="project-item">
+                            <div class="project-date">
+                                <p class="text-muted">1 hour</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-circle" style="color: red;"></i>
+                            </div>
+                            <div class="right">
+                                <div class="info">
+                                    <h3>Project Management Dashboard</h3>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="projects add-project">
+                        <div>
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>Add Project</h3>
+                        </div>
+                    </div>
+                 </div>
+
+                <!-- RECENT UPDATES -->
+                <div class="recent-updates">
+                    <h2>Recent Updates</h2>
+                    <div class="updates">
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="./assets/profile-6.webp" alt="user profile">
+                            </div>
+                            <div class="message">
+                                <p><b>Niki Zefanya</b> uploaded wireframe and UI designs for the login page and dashboard.</p>
+                                <small class="text-muted">2 Minutes Ago</small>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="./assets/profile-7.webp" alt="user profile">
+                            </div>
+                            <div class="message">
+                                <p><b>Tom Holland</b> added new section to the user guide for onboarding process.</p>
+                                <small class="text-muted">45 Minutes Ago</small>
+                            </div>
+                        </div>
+                        <div class="update">
+                            <div class="profile-photo">
+                                <img src="./assets/profile-4.webp" alt="user profile">
+                            </div>
+                            <div class="message">
+                                <p><b>Ariana Grande</b> completed QA testing for To-Do List App version 2.1; minor issues logged for review.</p>
+                                <small class="text-muted">2 Hours Ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </body>
+</html>
